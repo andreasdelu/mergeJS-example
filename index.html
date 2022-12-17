@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MergeJS Example</title>
+    <script src="mergeJS.js"></script>
+</head>
+
+<body>
+    <h1>MergeJS Example</h1>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding-top: 20px;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .circle {
+            width: 200px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .moving {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            transform: none !important;
+        }
+
+        @keyframes moving {
+            to {
+                rotate: 360deg;
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="circle moving"></div>
+        <div class="circle"></div>
+    </div>
+
+
+    <div class="container">
+
+    </div>
+
+    <script>
+
+        mergeInit({ container: ".container", mergeAmount: 20, sharpness: 100, inverted: false, childColor: "linear-gradient(rgb(66, 208, 255), rgb(246, 65, 246))" })
+
+        let circle = document.querySelector(".moving")
+        window.addEventListener("mousemove", (e) => {
+            circle.style.left = e.clientX - (circle.offsetWidth / 2) + "px";
+            circle.style.top = e.clientY - (circle.offsetHeight / 2) + "px";
+        })
+    </script>
+</body>
+
+</html>
